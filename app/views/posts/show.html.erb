@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subscription name:</strong>
+  <%= @post.subscription_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+  <strong>Monthly price:</strong>
+  <%= @post.monthly_price %>
+</p>
+
+<p>
+  <strong>Trial term:</strong>
+  <%= @post.trial_term %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @post.url %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
