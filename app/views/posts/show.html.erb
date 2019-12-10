@@ -59,6 +59,8 @@
         <%= "#{time_ago_in_words(comment.created_at || Time.now)} ago" %>
         ago by <%= comment.user.email %>
       </div>
+      <%= link_to 'コメント削除', [comment.post, comment],
+      method: :delete, data: { confirm: '削除しますか？' } %>
     <% end %>
   <% else %>
     There are no comments to show.
