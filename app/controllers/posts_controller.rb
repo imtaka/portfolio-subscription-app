@@ -6,6 +6,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = @post.comments.build
+    @comments = @post.comments
   end
 
   def new
@@ -16,6 +18,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    unless current_user
+      flash[:alert] = "Please sign in or sign up first"
+      redirect_to new_user_session_path
+    else
     @post = Post.new(post_params)
     @post.user = current_user
       if @post.save
@@ -24,6 +30,7 @@ class PostsController < ApplicationController
         render :new
       end
   end
+end
 
   def update
     if @post.update(post_params)

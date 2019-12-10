@@ -25,5 +25,46 @@
   <%= @post.url %>
 </p>
 
+<hr>
+
+<%= form_for [@post, @comment ], :html => {class: "form-horizontal", role: "form"} do |f| %>
+  <div class='form-group'>
+    <div class='control-label col-md-2'>
+      <%= f.label :body, 'New Comment' %>
+    </div>
+    <div class='col-md-10'>
+      <%= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your comment' %>
+    </div>
+  </div>
+  <div class='form-group'>
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit "Add Comment", class: 'btn btn-primary btn-lg pull-right' %>
+    </div>
+  </div>
+<% end %>
+
+<div class='col-md-12'>
+  <header>
+    <h2>Comments</h2>
+  </header>
+
+  <div class="col-md-10">
+    <% if @post.comments.any? %>
+
+    <% persisted_comments(@comments).each do |comment| %>
+      <div class="comment-body">
+        <%= comment.body %>
+      </div>
+      <div class="comment-time">
+        <%= "#{time_ago_in_words(comment.created_at || Time.now)} ago" %>
+        ago by <%= comment.user.email %>
+      </div>
+    <% end %>
+  <% else %>
+    There are no comments to show.
+  <% end %>
+</div>
+
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
