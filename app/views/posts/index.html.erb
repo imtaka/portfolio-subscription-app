@@ -23,9 +23,11 @@
         <td><%= post.trial_term %></td>
         <td><%= post.url %></td>
         <td><%= link_to 'Show', post %></td>
+        <% if user_signed_in? && current_user == post.user %>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <% end %>
+        </tr>
     <% end %>
   </tbody>
 </table>
