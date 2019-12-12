@@ -25,6 +25,11 @@
   <%= @post.url %>
 </p>
 
+<%= render "likes/like", post: @post %>
+
+
+
+
 <hr>
 
 <%= form_for [@post, @comment ], :html => {class: "form-horizontal", role: "form"} do |f| %>
