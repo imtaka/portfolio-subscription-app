@@ -35,6 +35,13 @@
   <%= @post.url %>
 </p>
 
+<p>
+  <strong>Tag:</strong>
+  <% @post.tags.each do |tag| %>
+    <span class="badge badge-primary"><%= tag.tagname %></span>
+  <% end %>
+</p>
+
 <%= render "likes/like", post: @post %>
 
 

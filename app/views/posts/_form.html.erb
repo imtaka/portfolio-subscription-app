@@ -41,6 +41,15 @@
     <%= form.text_field :url %>
   </div>
 
+  <div class="field">
+    <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :tagname) do |tag| %>
+      <%= tag.label do %>
+        <%= tag.check_box %>
+        <%= tag.text %>
+      <% end %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
