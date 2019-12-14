@@ -52,6 +52,6 @@ end
     end
 
     def post_params
-      params.require(:post).permit(:subscription_name, :description, :monthly_price, :trial_term, :url)
+      params.require(:post).permit(:subscription_name, :description, :monthly_price, :trial_term, :url, :post_image)
     end
 end

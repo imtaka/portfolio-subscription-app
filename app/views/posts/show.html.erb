@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <% if @post.post_image.attached? %>
+    <%= image_tag @post.post_image.variant(resize: "450x450") %>
+  <% end %>
+</p>
+
+<p>
   <strong>Subscription name:</strong>
   <%= @post.subscription_name %>
 </p>

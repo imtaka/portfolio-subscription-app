@@ -17,6 +17,10 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+      <td>
+        <% if post.post_image.attached? %>
+          <%= image_tag post.post_image.variant(resize: "30x30")%>
+        <% end %></td>
         <td><%= post.subscription_name %></td>
         <td><%= post.description %></td>
         <td><%= post.monthly_price %></td>
