@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<a style="color: Dodgerblue;" href="https://www.facebook.com/sharer/sharer.php?url=<%= request.url %>" rel="nofollow" target="_blank"><i class="fab fa-facebook fa-3x"></i></a>
+<a style="color: Dodgerblue;" href="http://twitter.com/share?text=<%= request.url %>&url=<?php the_permalink(); ?>" rel="nofollow" target="_blank"><i class="fab fa-twitter fa-3x"></i></a>
+<a style="color: Lightgreen;" href="https://social-plugins.line.me/lineit/share?url={<%= request.url %>}" rel="nofollow" target="_blank"><i class="fab fa-line fa-3x"></i></a>
+
 <p>
   <% if @post.post_image.attached? %>
     <%= image_tag @post.post_image.variant(resize: "450x450") %>
