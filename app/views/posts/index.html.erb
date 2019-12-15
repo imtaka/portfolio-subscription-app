@@ -1,59 +1,76 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
-<p>user search</p>
+<section class="jumbotron text-center">
+  <div class="container">
+    <div class="main-container"></div>
+  </div>
+</section>
 
-<%= form_tag(posts_path, :method => 'get' ) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag '検索', :name => nil %>
-<% end %>
+<div class="container">
+<div class="row">
+  <div class="col-lg-4">
+    <h1>投稿</h1>
+    <h5>お気に入りのサブスクリプションサービスを投稿しよう</h5>
+  </div>
+  <div class="col-lg-4">
+    <h1>拡散</h1>
+    <h5>友だちに知らないサービスを広めよう</h5>
+  </div><!-- /.col-lg-4 -->
+  <div class="col-lg-4">
+    <h1>口コミ</h1>
+    <h5>口コミを書いてサービスの良さを伝えよう</h5>
+  </div><!-- /.col-lg-4 -->
+</div><!-- /.row -->
+</div>
 
-<%= form_tag posts_path, method: :get, class: '' do %>
-  <%= select_tag :tag_id,
-  options_from_collection_for_select(Tag.all, :id, :tagname, params[:tag_id]),
-                  {
-                   prompt: 'タグ検索',
-                   onchange: 'submit(this.form);'
-                  }
-  %>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>Subscription name</th>
-      <th>Description</th>
-      <th>Monthly price</th>
-      <th>Trial term</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-      <td>
-        <% if post.post_image.attached? %>
-          <%= image_tag post.post_image.variant(resize: "30x30")%>
-        <% end %></td>
-        <td><%= post.subscription_name %></td>
-        <td><%= post.description %></td>
-        <td><%= post.monthly_price %></td>
-        <td><%= post.trial_term %></td>
-        <td><%= post.url %></td>
-        <td>(<%= post.liked_users.count %>)</td>
-        <% if user_signed_in? %>
-        <td><%= link_to 'Show', post %></td>
-        <% end %>
-        <% if user_signed_in? && current_user == post.user %>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-        </tr>
+<div class="container">
+  <section class="jumbotron text-center">
+    <h3 class="jumbotron-heading">検索フォーム</h3>
+    <%= form_tag(posts_path, :method => 'get') do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag '検索', :name => nil %>
     <% end %>
-    
-    </tbody>
-    </table>
-  <%= paginate @posts %>
 
-<br>
+    <%= form_tag posts_path, method: :get, class: '' do %>
+      <%= select_tag :tag_id,
+      options_from_collection_for_select(Tag.all, :id, :tagname, params[:tag_id]),
+                    {
+                     prompt: 'タグ検索',
+                     onchange: 'submit(this.form);'
+                    }
+      %>
+    <% end %>
+  </section>
+</div>
+
+<div class="container">
+  <div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-md-4 col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <% if post.post_image.attached? %>
+          <%= image_tag post.post_image.variant(resize: "300x300")%>
+        <% end %>
+
+        <div class="card-body">
+          <p class="card-title"><%= post.subscription_name %></p>
+          <p class="card-text"><%= post.description %></p>
+          <small class="text-muted"><%= post.created_at.to_s(:datetime_jp) %></small>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <% if user_signed_in? %>
+                <%= link_to '詳細', post, class: 'btn btn-success text-white'%>
+              <% end %>
+              <% if user_signed_in? && current_user == post.user %>
+                <%= link_to '編集', edit_post_path(post), class: 'btn btn-warning text-white'%>
+                <%= link_to '削除', post, class: 'btn btn-danger text-white', method: :delete %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= paginate @posts %>
+</div>

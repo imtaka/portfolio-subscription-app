@@ -22,7 +22,7 @@ gem 'rails_admin', github: 'sferik/rails_admin'
 gem 'cancancan', '~> 3.0', '>= 3.0.1'
 gem 'builder', '~> 3.2', '>= 3.2.3'
 gem 'dotenv-rails'
-gem 'omniauth'
+gem 'omniauth', '~> 1.9'
 gem 'omniauth-facebook'
 
 
