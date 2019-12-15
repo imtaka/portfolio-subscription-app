@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
+<p>user search</p>
+
+<%= form_tag(posts_path, :method => 'get' ) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag '検索', :name => nil %>
+<% end %>
+
 <%= form_tag posts_path, method: :get, class: '' do %>
   <%= select_tag :tag_id,
   options_from_collection_for_select(Tag.all, :id, :tagname, params[:tag_id]),

@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    @posts = @posts.search(params[:search])
     @posts = @posts.order(created_at: :desc).page(params[:page]).per(9)
   end
 

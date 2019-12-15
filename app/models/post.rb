@@ -6,4 +6,13 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :liked_users, through: :likes, source: :user
   has_one_attached :post_image
+
+  def self.search(search)
+    if search
+      Post.where(['subscription_name LIKE ?', "%#{search}%"])
+    else
+      Post.all
+    end
+  end
+
 end
