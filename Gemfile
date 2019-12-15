@@ -21,6 +21,10 @@ gem 'devise-i18n-views', '~> 0.3.7'
 gem 'rails_admin', github: 'sferik/rails_admin'
 gem 'cancancan', '~> 3.0', '>= 3.0.1'
 gem 'builder', '~> 3.2', '>= 3.2.3'
+gem 'dotenv-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.9'
