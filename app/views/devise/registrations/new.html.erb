@@ -1,37 +1,40 @@
-<h2>Sign up</h2>
+<div class="container">
+<br>
+<h2>新規登録</h2>
 
 
-<%= link_to "facebook", user_facebook_omniauth_authorize_path %>
+<%= link_to "facebookで新規登録", user_facebook_omniauth_authorize_path, class: 'btn btn-primary text-white' %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-  <%= f.label :username %><br />
+  <%= f.label :username,'ユーザーネーム' %><br />
   <%= f.text_field :username, class: "form-control",autofocus: true %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", class: "form-control"%>
   </div>
 
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録", class: 'btn btn-primary text-white' %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
