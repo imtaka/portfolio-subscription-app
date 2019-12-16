@@ -1,3 +1,8 @@
+
+
+
+
+
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -12,33 +17,34 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :subscription_name %>
-    <%= form.text_field :subscription_name %>
+    <%= form.label :subscription_name, 'サービス名' %>
+    <%= form.text_field :subscription_name, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :post_image %>
-    <%= form.file_field :post_image %>
+    <%= form.file_field :post_image, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: 'form-control', rows: 5 %>
   </div>
 
   <div class="field">
     <%= form.label :monthly_price %>
-    <%= form.number_field :monthly_price %>
+    <%= form.number_field :monthly_price, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :trial_term %>
-    <%= form.number_field :trial_term %>
+    <%= form.label :trial_term, 'トライアル期間' %>
+    <label><%= form.radio_button :trial_term, 0 %> あり </label>
+    <label><%= form.radio_button :trial_term, 1 %> なし </label>
   </div>
 
   <div class="field">
-    <%= form.label :url %>
-    <%= form.text_field :url %>
+    <%= form.label :url, 'URLアドレス' %>
+    <%= form.text_field :url, class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -51,6 +57,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit '保存', class: 'btn btn-primary' %>
   </div>
 <% end %>
