@@ -36,7 +36,7 @@
   <div class="field">
     <%= form.label :monthly_price, '月額' %>
     <span class="badge badge-danger">必須</span>
-    <%= form.number_field :monthly_price, class: 'form-control' %>
+    <%= form.number_field :monthly_price, step: "10", min: 0, max: 100000,class: 'form-control' %>
   </div>
 
   <div class="field">

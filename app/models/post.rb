@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   validates :subscription_name, presence: true, length:{ maximum: 50 }
   validates :description, presence: true, length:{ maximum: 500 }
-  validates :monthly_price, presence: true
+  validates :monthly_price, presence: true, numericality:{only_integer:true, greater_than_or_equal_to:0}
   validates :trial_term, presence: true
 
 
