@@ -1,4 +1,10 @@
 class Post < ApplicationRecord
+  validates :subscription_name, presence: true, length:{ maximum: 50 }
+  validates :description, presence: true, length:{ maximum: 500 }
+  validates :monthly_price, presence: true
+  validates :trial_term, presence: true
+
+
   has_many :post_tag_relations, dependent: :destroy
   has_many :tags, through: :post_tag_relations
   belongs_to :user

@@ -18,26 +18,30 @@
 
   <div class="field">
     <%= form.label :subscription_name, 'サービス名' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.text_field :subscription_name, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :post_image %>
+    <%= form.label :post_image, '画像投稿' %>
     <%= form.file_field :post_image, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :description, '詳細' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.text_area :description, class: 'form-control', rows: 5 %>
   </div>
 
   <div class="field">
-    <%= form.label :monthly_price %>
+    <%= form.label :monthly_price, '月額' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.number_field :monthly_price, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :trial_term, 'トライアル期間' %>
+    <span class="badge badge-danger">必須</span>
     <label><%= form.radio_button :trial_term, 0 %> あり </label>
     <label><%= form.radio_button :trial_term, 1 %> なし </label>
   </div>
