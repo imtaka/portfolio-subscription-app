@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.includes(:post_image_attachment, :user)
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.includes(:post_image_attachment)
     @posts = @posts.search(params[:search])
     @posts = @posts.order(created_at: :desc).page(params[:page]).per(9)
   end
