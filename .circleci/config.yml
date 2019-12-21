@@ -36,13 +36,13 @@ jobs:
     - run: bundle exec rake db:create RAILS_ENV=test
     - run: bundle exec rake db:migrate RAILS_ENV=test
 
-    - run:
-        name: Run rspec
-        command: |
-          yarn
-          mkdir /tmp/test-results
-          TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-          bundle exec rspec --format progress --color --format documentation
+   # - run:
+    #    name: Run rspec
+     #   command: |
+      #    yarn
+       #   mkdir /tmp/test-results
+        #  TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+         # bundle exec rspec --format progress --color --format documentation
     #- run:
         #name: Rubocop
         #command: bundle exec rubocop -a
