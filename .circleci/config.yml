@@ -47,11 +47,11 @@ jobs:
         #name: Rubocop
         #command: bundle exec rubocop -a
 
-    - store_test_results:
-        path: /tmp/test-results
-    - store_artifacts:
-        path: /tmp/test-results
-        destination: test-results
+    #- store_test_results:
+        #path: /tmp/test-results
+    #- store_artifacts:
+        #path: /tmp/test-results
+        #destination: test-results
 
   build_image:
     docker:
@@ -74,3 +74,9 @@ jobs:
           command: |
             docker push ${ECR_DOMAIN}:$CIRCLE_SHA1
             docker push ${ECR_DOMAIN}:latest
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - build_image
