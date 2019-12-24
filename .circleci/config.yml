@@ -76,12 +76,11 @@ jobs:
             docker push ${ECR_DOMAIN}:latest
 workflows:
   version: 2
-    test:
-      jobs:
-        - build
-        - build_image:
-            requires:
-              - build
-            filters:
-              branches:
-                only: master
+    jobs:
+      - build
+      - build_image:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
