@@ -74,13 +74,3 @@ jobs:
           command: |
             docker push ${ECR_DOMAIN}:$CIRCLE_SHA1
             docker push ${ECR_DOMAIN}:latest
-workflows:
-  version: 2
-    jobs:
-      - build
-      - build_image:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
