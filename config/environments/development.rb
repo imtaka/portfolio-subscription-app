@@ -68,5 +68,16 @@ Rails.application.configure do
     Bullet.console = true
     Bullet.rails_logger = true
   end
+  config.hosts.clear
 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :user_name => ENV['MAILADDRESS'],
+    :password => ENV['MAILPASSWORD'],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
