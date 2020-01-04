@@ -63,22 +63,26 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener_web
   config.after_initialize do
     Bullet.enable = true
-    Bullet.alert = true
+    Bullet.alert = false
     Bullet.bullet_logger = true
     Bullet.console = true
     Bullet.rails_logger = true
+    Bullet.add_footer = true
+    Bullet.n_plus_one_query_enable = false
+    Bullet.unused_eager_loading_enable = false
+    Bullet.counter_cache_enable        = false
   end
 
   config.hosts.clear
 
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  address: 'smtp.gmail.com',
-  port: 587,
-  user_name: ENV['MAILADDRESS'],
-  password: ENV['MAILPASSWORD'],
-  authentication: 'plain',
-  enable_starttls_auto: true
-}
+#   config.action_mailer.raise_delivery_errors = true
+#   config.action_mailer.delivery_method = :smtp
+#   config.action_mailer.smtp_settings = {
+#   address: 'smtp.gmail.com',
+#   port: 587,
+#   user_name: ENV['MAILADDRESS'],
+#   password: ENV['MAILPASSWORD'],
+#   authentication: 'plain',
+#   enable_starttls_auto: true
+# }
 end
