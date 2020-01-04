@@ -51,9 +51,9 @@
         <% end %>
 
         <div class="card-body">
-          <p class="card-title"><%= post.subscription_name %></p>
-          <p class="card-text"><%= post.description %></p>
-          <small class="text-muted"><%= post.created_at.to_s(:datetime_jp) %></small>
+          <p class="card-title">サービス名：<%= post.subscription_name %></p>
+          <p class="card-text">詳細：<%= simple_format(post.description.truncate(20)) %></p>
+          <small class="text-muted">作成日：<%= post.created_at.to_s(:datetime_jp) %></small>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               <% if user_signed_in? %>
