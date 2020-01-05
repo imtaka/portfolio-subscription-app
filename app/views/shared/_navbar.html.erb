@@ -12,6 +12,9 @@
       <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-light text-black" %>
+      </li>
       <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to 'プロフィール詳細', users_detail_path, class: "btn btn-success text-white" %>
